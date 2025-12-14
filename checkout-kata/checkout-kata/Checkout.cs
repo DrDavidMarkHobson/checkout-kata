@@ -8,15 +8,27 @@ public interface ICheckout
 
 public class Checkout : ICheckout
 {
-    private string _scannedItems = "";
+    private List<string> _scannedItems = new();
     public void Scan(string item)
     {
-        _scannedItems = item;
+        _scannedItems.Add(item);
     }
 
     public int GetTotalPrice()
     {
-        switch (_scannedItems)
+        var totalPrice = 0;
+        
+        foreach (var item in _scannedItems)
+        {
+            totalPrice += TotalPricePerItem(item);
+        }
+        
+        return totalPrice;
+    }
+
+    private int TotalPricePerItem(string item)
+    {
+        switch (item)
         {
             case "A":
                 return 50;
