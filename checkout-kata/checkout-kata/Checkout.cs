@@ -23,22 +23,28 @@ public class Checkout : ICheckout
 
         foreach (var item in distinctItems)
         {
-            var itemName = item.Key;
-            var quantity = item.Value;
-            
-            if (OfferApplies(itemName, quantity))
-            {
-                totalPrice += ApplyOffer(itemName, ref quantity);
-            }
-            if(quantity > 0)
-            {
-                totalPrice += PricePerItem(itemName) * quantity;
-            }
+            totalPrice += DistinctTotalPrice(item.Key, item.Value);
         }
         
         return totalPrice;
     }
-            
+
+    private static int DistinctTotalPrice(string name, int quantity)
+    {
+        var totalPrice = 0;
+        
+        if (OfferApplies(name, quantity))
+        {
+            totalPrice += ApplyOffer(name, ref quantity);
+        }
+        if(quantity > 0)
+        {
+            totalPrice += PricePerItem(name) * quantity;
+        }
+        
+        return totalPrice;
+    }
+
     private static int ApplyOffer(string item, ref int quantity)
     {
         var offer = 0;
