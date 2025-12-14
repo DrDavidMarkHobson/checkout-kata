@@ -2,16 +2,17 @@
 
 public class CheckoutShould
 {
-    [Test]
-    public void Give_The_Total_Price_Of_A_Single_Scanned_Item()
+    [TestCase("C", 20)]
+    [TestCase("D", 15)]
+    public void Give_The_Total_Price_Of_A_Single_Scanned_Item(string item, int expected)
     {
         //Arrange
         ICheckout checkout = new Checkout();
 
         //Act
-        checkout.Scan("D");
+        checkout.Scan(item);
         
         //Assert
-        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(15));
+        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expected));
     }
 }
