@@ -33,6 +33,8 @@ public class CheckoutShould
     public static List<TestCase> MultipleItemCases()
     {
         var cases = new List<TestCase>();
+        cases.Add(new TestCase(["A", "A", "A"], 130));
+        cases.Add(new TestCase(["B", "B"], 45));
         cases.Add(new TestCase(["C", "C"], 40));
         cases.Add(new TestCase(["D", "D"], 30));
         return cases;
