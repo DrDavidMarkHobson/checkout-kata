@@ -2,6 +2,8 @@
 
 public class CheckoutShould
 {
+    [TestCase("A", 50)]
+    [TestCase("B", 30)]
     [TestCase("C", 20)]
     [TestCase("D", 15)]
     public void Give_The_Total_Price_Of_A_Single_Scanned_Item(string item, int expected)

@@ -16,10 +16,18 @@ public class Checkout : ICheckout
 
     public int GetTotalPrice()
     {
-        if (_scannedItems == "C")
+        switch (_scannedItems)
         {
-            return 20;
+            case "A":
+                return 50;
+            case "B":
+                return 30;
+            case "C":
+                return 20;
+            case "D":
+                return 15;
+            default:
+                return 15;
         }
-        return 15;
     }
 }
