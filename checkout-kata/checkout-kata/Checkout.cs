@@ -17,17 +17,16 @@ public class Checkout : ICheckout
     public int GetTotalPrice()
     {
         var totalPrice = 0;
-
-        var distinctItems = _scannedItems.Distinct().ToDictionary(item => item, 
-            item => _scannedItems.Count(i => i == item));
-
-        foreach (var item in distinctItems)
+        foreach (var item in DistinctItems())
         {
             totalPrice += DistinctTotalPrice(item.Key, item.Value);
         }
         
         return totalPrice;
     }
+
+    private Dictionary<string, int> DistinctItems() => _scannedItems.Distinct().ToDictionary(item => item, 
+            item => _scannedItems.Count(i => i == item));
 
     private static int DistinctTotalPrice(string name, int quantity)
     {
