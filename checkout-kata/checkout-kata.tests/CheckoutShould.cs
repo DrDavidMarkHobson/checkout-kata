@@ -34,7 +34,9 @@ public class CheckoutShould
     {
         var cases = new List<TestCase>();
         cases.Add(new TestCase(["A", "A", "A"], 130));
+        cases.Add(new TestCase(["A", "A", "A", "A", "A"], 230));
         cases.Add(new TestCase(["B", "B"], 45));
+        cases.Add(new TestCase(["B", "B", "B"], 75));
         cases.Add(new TestCase(["C", "C"], 40));
         cases.Add(new TestCase(["D", "D"], 30));
         cases.Add(new TestCase(["A", "A", "A", "B", "B","C", "D"], 210));
